@@ -14,21 +14,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 
 public class DemoProjectTest {
-  @Test(dataProvider = "dp")
-  public void f(Integer n, String s) {
-  }
-
-  @DataProvider
-  public Object[][] dp() {
-    return new Object[][] {
-      new Object[] { 1, "a" },
-      new Object[] { 2, "b" },
-    };
-  }
-  @BeforeSuite
-  public void beforeSuite() {
-  }
-  
+ 
   @Test
   public void PostUserDetails() {
 	  
@@ -66,7 +52,8 @@ public class DemoProjectTest {
   public void GetUserDetails() {
 	  
 			// Specify the base URL to the RESTful web service
-			RestAssured.baseURI = "https://reqres.in/api/users";
+			RestAssured.baseURI = "http://dummy.restapiexample.com/api/v1/employees";
+			//RestAssured.baseURI = "https://reqres.in/api/users";
 
 			// Get the RequestSpecification of the request 
 			RequestSpecification httpRequest = RestAssured.given();
@@ -83,7 +70,7 @@ public class DemoProjectTest {
 			int statusCode = response.getStatusCode();
 
 			// Assert that correct status code is returned.
-			Assert.assertEquals(statusCode /*actual value*/, 200 /*expected value*/, "Correct status code returned");
+			Assert.assertEquals(statusCode /*actual value*/, 200 /*expected value*/, "Status code returned");
 
 		}
 
